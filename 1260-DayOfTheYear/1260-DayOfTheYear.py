@@ -1,0 +1,13 @@
+# Last updated: 8/11/2026, 4:05:23 PM
+class Solution:
+    def dayOfYear(self, date):
+        year, month, day = map(int, date.split("-"))
+
+        days = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+        answer = sum(days[:month-1]) + day
+
+        if (year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)) and month > 2:
+            answer += 1
+
+        return answer
